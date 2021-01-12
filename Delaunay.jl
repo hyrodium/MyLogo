@@ -202,7 +202,7 @@ function _hoge(ps,fs)
 end
 
 function adfa()
-    N = 50
+    N = 250
     d = 1000
     _ps = [Point2D(0,0), Point2D(1000,0), Point2D(0,1000), Point2D(1000,1000)]
     vs = [Vertex(i) for i in 1:N]
