@@ -89,11 +89,6 @@ function draw(ps::Vector{Point2D}, vs::Vector{Vertex} ,es::Vector{Edge} ,fs::Vec
                 p3 = Point(ps[f.i3])
                 circle(p1, p2, p3, :stroke)
             end
-            # f = fs[1]
-            # p1 = Point(0,0)
-            # p2 = Point(d,0)
-            # p3 = Point(ps[f.i3])
-            # circle(p1, p2, p3, :stroke)
         end
 
         setline(3)
@@ -307,7 +302,7 @@ end
 ## adfa
 
 function adfa()
-    N = 8
+    N = 19
     d = 1000
     _ps_ = [Point2D(0,0), Point2D(1000,0), Point2D(0,1000), Point2D(1000,1000)]
     vs = [Vertex(i) for i in 1:N]
@@ -356,4 +351,6 @@ function adfa()
 end
 
 adfa()
+
+
 

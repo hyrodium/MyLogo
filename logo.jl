@@ -1,5 +1,9 @@
 using Images
 using ImageFiltering, ColorVectorSpace
+push!(LOAD_PATH, "../VisualizingDelaunay.jl/")
+using VisualizingDelaunay
+
+
 img = load("hyrodium.jpg")
 
 d = 1000
@@ -19,7 +23,6 @@ b = mapwindow(ImageFiltering.median!, colors_b, (5, 5))
 
 [RGB(r[i,j], g[i,j], b[i,j]) for i in 1:d, j in 1:d]
 
-gray_r = Gray.(r)
 
 function clp(c)
     return clamp(c,Gray(0.0),Gray(1.0))
@@ -97,6 +100,18 @@ x
 
 
 
+x = [Gray(0.0) for i in 1:d, j in 1:d]
+for I in reduced
+    x[mod(I,d), I÷d] = 1.0
+end
+x
+
+
+ps = [VisualizingDelaunay.Point2D(I÷d, mod(I,d)) for I in reduced]
+
+VisualizingDelaunay.main(ps)
+
+VisualizingDelaunay.Mesh2D()
 
 
 tess = DelaunayTessellation(1)
@@ -170,7 +185,6 @@ set_default_plot_size(30cm,15cm)
 
 # save as SVG
 draw(SVG("voroimage.svg", 8inch, 4inch), p)
-
 
 
 
